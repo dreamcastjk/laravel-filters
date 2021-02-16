@@ -14,6 +14,11 @@ class User extends Authenticatable
     use HasFactory, Notifiable, Statuses, Genders;
 
     /**
+     * @var int
+     */
+    protected $perPage = 20;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

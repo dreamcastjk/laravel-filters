@@ -11,8 +11,6 @@
 </head>
 <body>
 
-
-
 <div class="container">
     <div class="row">
         <div class="col-3">
@@ -42,11 +40,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="birthday">Gender</label>
+                        <label for="gender">Gender</label>
                         <select name="gender">
-                            <option>All</option>
-                            <option value="{{ \App\Models\User::$GENDER_MALE }}" {{ request()->gender == \App\Models\User::$GENDER_MALE ? 'checked' : '' }}>{{ \App\Models\User::$GENDER_MALE_TITLE }}</option>
-                            <option value="{{ \App\Models\User::$GENDER_FEMALE }}" {{ request()->gender == \App\Models\User::$GENDER_FEMALE ? 'checked' : '' }}>{{ \App\Models\User::$GENDER_FEMALE_TITLE }}</option>
+                            <option value="{{ \App\Models\User::$GENDER_MALE }}" {{ request()->gender == \App\Models\User::$GENDER_MALE ? 'selected' : '' }}>{{ \App\Models\User::$GENDER_MALE_TITLE }}</option>
+                            <option value="{{ \App\Models\User::$GENDER_FEMALE }}" {{ request()->gender == \App\Models\User::$GENDER_FEMALE ? 'selected' : '' }}>{{ \App\Models\User::$GENDER_FEMALE_TITLE }}</option>
                         </select>
                     </div>
 
@@ -64,7 +61,7 @@
             <th scope="col">email</th>
             <th scope="col">is active</th>
             <th scope="col">gender</th>
-            <th scope="col">birthdate</th>
+            <th scope="col">birthday</th>
         </tr>
         </thead>
         <tbody>
@@ -76,7 +73,6 @@
         </tbody>
 
     </table>
-    {{ $users->links() }}
 </div>
 </body>
 </html>

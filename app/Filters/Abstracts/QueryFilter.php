@@ -4,8 +4,8 @@
 namespace App\Filters\Abstracts;
 
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 abstract class QueryFilter
 {
@@ -15,22 +15,23 @@ abstract class QueryFilter
 
     /**
      * UsersFilter constructor.
-     * @param Builder $builder
      * @param Request $request
      */
-    public function __construct(Builder $builder, Request $request)
+    public function __construct(Request $request)
     {
-        $this->builder = $builder;
         $this->request = $request;
     }
 
     /**
      * Applying all filters.
      *
+     * @param Builder $builder
      * @return Builder
      */
-    public function apply() : Builder
+    public function apply(Builder $builder) : Builder
     {
+        $this->builder = $builder;
+
         foreach ($this->filters() as $filter => $filterValue) {
             if (method_exists($this, $filter)) {
                 $this->$filter($filterValue);

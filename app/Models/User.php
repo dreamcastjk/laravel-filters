@@ -4,7 +4,9 @@ namespace App\Models;
 
 use App\Traits\Genders;
 use App\Traits\Statuses;
+use App\Filters\UsersFilter;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,5 +58,15 @@ class User extends Authenticatable
     public function info() : HasOne
     {
         return $this->hasOne(UserInfo::class);
+    }
+
+    /**
+     * @param Builder $query
+     * @param UsersFilter $filters
+     * @return Builder
+     */
+    public function scopeFilter(Builder $query, UsersFilter $filters)
+    {
+        return $filters->apply($query);
     }
 }

@@ -14,7 +14,7 @@ class UsersFilter extends QueryFilter
      *
      * @param $value
      */
-    public function name($value) : void
+    public function name(?string $value) : void
     {
         $this->builder->where('name', 'like', "%$value%");
     }
@@ -24,7 +24,7 @@ class UsersFilter extends QueryFilter
      *
      * @param $value
      */
-    public function email($value) : void
+    public function email(?string $value) : void
     {
         $this->builder->where('email', 'like', "%$value%");
     }
@@ -34,7 +34,7 @@ class UsersFilter extends QueryFilter
      *
      * @param $value
      */
-    public function is_active($value) : void
+    public function is_active(?bool $value) : void
     {
         $this->builder->where('is_active', $value);
     }
@@ -44,9 +44,9 @@ class UsersFilter extends QueryFilter
      *
      * @param $value
      */
-    public function gender($value) : void
+    public function gender(?int $value) : void
     {
-        $this->builder->where('gender', "$value");
+        $this->builder->where('gender', $value);
     }
 
     /**
@@ -54,7 +54,7 @@ class UsersFilter extends QueryFilter
      *
      * @param $value
      */
-    public function birthday($value) : void
+    public function birthday(?string $value) : void
     {
         if (!$value){
             return;
